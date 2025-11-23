@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kejutan Untukmu</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 650px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 14px 28px;
+            background: #fff;
+            color: #ff6b81;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #ffe3e8;
+        }
+
+        .message {
+            margin-top: 30px;
+            font-size: 24px;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        img {
+            width: 260px;
+            margin-top: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Halo, rahelia❤️</h1>
+    <p>semangat terus ya sayanggg,ini ada untuk kamu...</p>
+    <button class="btn" onclick="showSurprise()">Klik di sini</button>
+
+    <div class="message" id="msg">semangat menjalani hari ada aku selalu yang menemani kamu kok. ❤️</div>
+
+    <!-- Foto opsional -->
+    <img src="padill.jpg" id="photo">
+
+    <!-- MUSIC (ganti URL jika mau lagu lain) -->
+    <audio id="music" preload="auto">
+        <source src="https://www.youtube.com/watch?v=e78-lIUYpaM" type="audio/mp3">
+    </audio>
+</div>
+
+<script>
+    function showSurprise() {
+        // tampilkan pesan
+        const msg = document.getElementById("msg");
+        msg.style.opacity = 1;
+
+        // tampilkan foto
+        const photo = document.getElementById("photo");
+        photo.style.display = "block";
+
+        // putar musik
+        const music = document.getElementById("music");
+        music.volume = 0.6; // volume 0-1
+        music.play();
+
+        // confetti
+        for (let i = 0; i < 100; i++) {
+            let conf = document.createElement("div");
+            conf.style.position = "fixed";
+            conf.style.width = "8px";
+            conf.style.height = "8px";
+            conf.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            conf.style.top = "-10px";
+            conf.style.left = Math.random() * window.innerWidth + "px";
+            conf.style.opacity = "0.8";
+            conf.style.borderRadius = "50%";
+            conf.style.animation = "fall 2.4s linear forwards";
+            document.body.appendChild(conf);
+            
+            setTimeout(() => conf.remove(), 2500);
+        }
+    }
+</script>
+
+<style>
+    @keyframes fall {
+        to {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+</style>
+
+</body>
+</html>
